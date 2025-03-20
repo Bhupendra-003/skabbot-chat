@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect } from "react"
 import Navbar from "./Navbar"
 import Sidebar from "./Sidebar"

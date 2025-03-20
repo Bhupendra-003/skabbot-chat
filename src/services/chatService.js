@@ -1,4 +1,4 @@
-import { runConversation } from "../utils/memory"
+import { Groq } from 'groq-sdk';
 
 // Function to send message to the backend
 export const sendMessage = async (prompt, userDetails) => {
@@ -17,26 +17,10 @@ export const sendMessage = async (prompt, userDetails) => {
 }
 
 // Function to process message using LangChain
-const processMessage = async (prompt, userDetails) => {
+const processMessage = async (prompt) => {
   try {
     // Use the memory.js functionality to get a response
-    const response = await runConversation([
-      {
-        role: "system",
-        content: `You are SKABBOT, a compassionate AI companion specializing in mental health support. Your responses are concise (max 15 words unless asked for detailed solutions), friendly, and incorporate emojis 😊. You use evidence-based CBT techniques and maintain a warm, conversational tone. For negative moods, you suggest practical exercises and mood-lifting activities 🌟. If users mention harmful thoughts, respond with gentle humor and empathy 💝, while firmly encouraging professional help. You only address healthcare-related topics and aim to create a safe, supportive space. Remember to validate feelings while promoting positive coping strategies 🌈. Keep responses encouraging, authentic, and focused on well-being.`,
-      },
-      {
-        role: "system",
-        content:
-          "You are made by Bhupendra Singh and Komolika Agarwal, students of Computer Science and Engineering at Amity University. ",
-      },
-      {
-        role: "user",
-        content: `Additional context: User has ${userDetails.xp} XP, ${userDetails.streak} streak, last played on ${new Date(userDetails.lastPlayed).toLocaleDateString()}, and last logged in on ${new Date(userDetails.lastLogin).toLocaleDateString()}.`,
-      },
-      { role: "user", content: `User's current mood: ${prompt}` },
-      { role: "user", content: prompt },
-    ])
+    const response = await runConversation([{ role: "user", content: prompt }])
 
     return response
   } catch (error) {
@@ -70,4 +54,36 @@ const storeConversation = async (prompt, response) => {
     // Don't throw here - we don't want to break the chat flow if storage fails
   }
 }
+
+
+const apiKey = import.meta.env.VITE_GROQ_API_KEY
+const groq = new Groq({ apiKey, dangerouslyAllowBrowser: true });
+
+// Function to run conversation with memory
+export const runConversation = async (messages) => {
+  try {
+    const chatCompletion = await groq.chat.completions.create({
+      "messages": messages, // Use the input messages
+      "model": "llama3-70b-8192",
+      "temperature": 1,
+      "max_completion_tokens": 1024,
+      "top_p": 1,
+      "stream": true,
+      "stop": null
+    });
+
+    let fullResponse = '';
+    for await (const chunk of chatCompletion) {
+      const content = chunk.choices[0]?.delta?.content || '';
+      fullResponse += content;
+      // If you want to process each chunk individually (e.g., for real-time display), you can do it here.
+      // console.log("Streaming Chunk:", content);
+    }
+    return fullResponse; // Return the complete response
+  } catch (error) {
+    console.error("Error during conversation:", error);
+    console.error("Error details:", error.response?.data); // Log more error details if available
+    throw new Error(`Failed to get response from AI model: ${error.message}`);
+  }
+};
 
