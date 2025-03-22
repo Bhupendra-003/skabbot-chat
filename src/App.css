@@ -351,7 +351,7 @@ body {
   max-width: 100vw;
   margin: 0 auto;
   width: 100%;
-  padding: 2rem 8rem;
+  padding: 2rem;
   gap: 2rem;
 }
 
@@ -362,22 +362,29 @@ body {
   gap: 1rem;
   overflow-y: auto;
   padding: 1rem;
-  height: 537px;
+  height: calc(100vh - 250px);
   scroll-behavior: smooth;
-  scrollbar-width: none; /* Hides scrollbar for Firefox */
+  scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
 .message-area::-webkit-scrollbar {
-  display: none; /* Hides scrollbar for WebKit browsers (Chrome, Safari, Edge) */
+  display: none;
 }
 
 .msg-user,
 .msg-bot {
-  max-width: 70%;
+  max-width: 85%;
   padding: 1rem;
   border-radius: 1rem;
   animation: messageAppear 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .msg-user,
+  .msg-bot {
+    max-width: 70%;
+  }
 }
 
 .msg-user {
@@ -418,28 +425,34 @@ body {
 
 /* Message Input */
 .message-input {
-  width: 85vw;
+  width: 100%;
   position: fixed;
   bottom: 0;
+  left: 0;
   margin-top: auto;
-  padding: 1rem 2rem 3rem 2rem;
+  padding: 1rem;
+  background-color: var(--bg-color);
 }
 
 .input-form {
   position: relative;
   display: flex;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .message-field {
   width: 100%;
   padding: 1rem 1.5rem;
   padding-right: 4rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-color);
   border-radius: 1.5rem;
   font-size: 1rem;
   transition: all 0.2s ease;
-  background-color: white;
+  background-color: var(--surface-color);
+  color: var(--text-primary);
 }
 
 .message-field:focus {
@@ -448,19 +461,9 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
-[data-theme="dark"] .message-field {
-  background-color: var(--input-bg);
-  color: var(--input-text);
-  border-color: var(--border-color);
-}
-
-[data-theme="dark"] .message-field::placeholder {
-  color: var(--input-placeholder);
-}
-
 .send-button {
   position: absolute;
-  right: 1rem;
+  right: 2rem;
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
@@ -469,6 +472,9 @@ body {
   color: white;
   cursor: pointer;
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .send-button:hover {
@@ -508,6 +514,85 @@ body {
   }
 }
 
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .nav-stats {
+    display: none;
+  }
+
+  .chat-container {
+    padding: 1rem;
+  }
+
+  .xp-container {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .nav-brand {
+    gap: 1rem;
+  }
+
+  .nav-profile {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .theme-selector {
+    flex-wrap: wrap;
+  }
+
+  .chat-container {
+    padding: 0.5rem;
+  }
+
+  .message-area {
+    height: calc(100vh - 200px);
+  }
+
+  .input-form {
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-name {
+    font-size: 1.25rem;
+  }
+
+  .logo-img {
+    height: 2rem;
+  }
+
+  .theme-btn {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .message-field {
+    padding: 0.75rem 1rem;
+    padding-right: 3rem;
+    font-size: 0.875rem;
+  }
+
+  .send-button {
+    width: 2rem;
+    height: 2rem;
+    right: 1rem;
+  }
+}
+
+/* Dark Mode Styles */
 [data-theme="dark"] .brand-name {
   color: var(--primary-color);
 }
@@ -554,6 +639,13 @@ body {
   cursor: pointer;
   padding: 0.5rem;
   margin-right: 1rem;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
 }
 
 .menu-icon {
@@ -643,3 +735,9 @@ body {
   background-color: var(--bg-color);
 }
 
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100%;
+    left: -100%;
+  }
+}

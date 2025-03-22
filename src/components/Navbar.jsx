@@ -12,7 +12,7 @@ const Navbar = ({ toggleSidebar, xp, streak, updateStreak }) => {
   }
 
   return (
-    <div className="navbar">
+    <div className="sm:navbar">
       <div className="nav-brand">
         <button id="menu-toggle" className="menu-toggle" onClick={toggleSidebar}>
           <i className="menu-icon">≡</i>

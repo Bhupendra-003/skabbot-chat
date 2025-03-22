@@ -4,18 +4,21 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@langchain/core": "^0.1.40",
     "@langchain/groq": "^0.0.3",
+    "@tailwindcss/vite": "^4.0.15",
     "groq-sdk": "^0.17.0",
+    "lucide-react": "^0.483.0",
     "mongodb": "^6.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
+    "tailwindcss": "^4.0.15",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
