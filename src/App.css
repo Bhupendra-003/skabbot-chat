@@ -584,7 +584,7 @@ body {
 
 .sidebar-nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 2rem 1.5rem;
   border-bottom: 1px solid var(--border-color);

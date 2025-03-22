@@ -4,6 +4,7 @@ const Sidebar = ({ active, toggleSidebar }) => {
   return (
     <div className={`sidebar ${active ? "active" : ""}`}>
       <div className="sidebar-nav">
+        <h2>SKABOT</h2>
         <i className="fas fa-times close-icon" onClick={toggleSidebar}></i>
       </div>
       <div className="sidebar-content">
@@ -11,14 +12,6 @@ const Sidebar = ({ active, toggleSidebar }) => {
           <a href="#" className="sidebar-item">
             <i className="fas fa-home"></i>
             <span>Home</span>
-          </a>
-          <a href="#" className="sidebar-item">
-            <i className="fas fa-gamepad"></i>
-            <span>Games</span>
-          </a>
-          <a href="#" className="sidebar-item">
-            <i className="fas fa-chart-line"></i>
-            <span>Progress</span>
           </a>
           <a href="#" className="sidebar-item">
             <i className="fas fa-cog"></i>

@@ -80,7 +80,21 @@ const Navbar = ({ toggleSidebar, xp, streak, updateStreak }) => {
             data-theme="purple"
             onClick={() => setTheme("purple")}
           >
-            <i className="fas fa-palette"></i>
+            <i className="fas fa-heart"></i>
+          </button>
+          <button
+            className={`theme-btn ${theme === "green" ? "active" : ""}`}
+            data-theme="green"
+            onClick={() => setTheme("green")}
+          >
+            <i className="fas fa-tree"></i>
+          </button>
+          <button
+            className={`theme-btn ${theme === "orange" ? "active" : ""}`}
+            data-theme="orange"
+            onClick={() => setTheme("orange")}
+          >
+            <i className="fas fa-fire"></i>
           </button>
         </div>
       </div>
