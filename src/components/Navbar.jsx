@@ -12,7 +12,7 @@ const Navbar = ({ toggleSidebar, xp, streak, updateStreak }) => {
   }
 
   return (
-    <div className="sm:navbar">
+    <div className="navbar">
       <div className="nav-brand">
         <button id="menu-toggle" className="menu-toggle" onClick={toggleSidebar}>
           <i className="menu-icon">≡</i>
@@ -45,17 +45,17 @@ const Navbar = ({ toggleSidebar, xp, streak, updateStreak }) => {
             <i className="fas fa-chevron-down"></i>
           </div>
           <div className="dropdown-content">
-            <a href="https://example.com/game1" className="dropdown-item" onClick={handleGameClick}>
-              <i className="fas fa-puzzle-piece"></i>
-              <span>Puzzle Game</span>
-            </a>
-            <a href="https://example.com/game2" className="dropdown-item" onClick={handleGameClick}>
-              <i className="fas fa-chess"></i>
-              <span>Chess</span>
-            </a>
-            <a href="https://example.com/game3" className="dropdown-item" onClick={handleGameClick}>
+          <a href="https://www.calm.com/breathe" className="dropdown-item" onClick={handleGameClick}>
               <i className="fas fa-brain"></i>
-              <span>Memory Game</span>
+              <span>Breathing Exercise</span>
+            </a>
+            <a href="https://api.razzlepuzzles.com/2048" className="dropdown-item" onClick={handleGameClick}>
+              <i className="fas fa-puzzle-piece"></i>
+              <span>2048 Game</span>
+            </a>
+            <a href="https://playtictactoe.org/" className="dropdown-item" onClick={handleGameClick}>
+              <i className="fas fa-chess"></i>
+              <span>Tic Tac Toe</span>
             </a>
           </div>
         </div>

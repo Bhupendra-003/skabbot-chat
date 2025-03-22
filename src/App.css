@@ -567,7 +567,7 @@ body {
 
 @media (max-width: 480px) {
   .brand-name {
-    font-size: 1.25rem;
+    display: block;
   }
 
   .logo-img {
@@ -589,6 +589,28 @@ body {
     width: 2rem;
     height: 2rem;
     right: 1rem;
+  }
+  .msg-user{
+    font-size: .9rem;
+    padding: 10px;
+    min-width: 3rem;
+  }
+  .msg-bot{
+    font-size: .9rem;
+    padding: 10px;
+    min-width: 3rem;
+  }
+  .navbar{
+    padding: 0;
+    height: 65px;
+    display: flex;
+    padding-left: 30px;
+  }
+  .nav-profile{
+    display: none;
+  }
+  .chat-container{
+    height: 60vh;
   }
 }
 
@@ -639,9 +661,31 @@ body {
   cursor: pointer;
   padding: 0.5rem;
   margin-right: 1rem;
-  display: none;
+  display: block;
+  transform: scale(1.5);
 }
-
+.sidebar-dropdown-content{
+  display: none;
+  flex-direction: column;
+}
+.sidebar-dropdown-content button{
+  align-items: center;
+  width: full;
+  height: 45px;
+  display: flex;
+  padding: 16px 40px;
+  gap: 1rem;
+  background-color: var(--surface-color);
+  border: none;
+  outline: none;
+  color: var(--message-text);
+}
+.sidebar-dropdown-content button:hover{
+  background-color: var(--bg-color);
+}
+.sidebar-dropdown-content p{
+  font-size: 1rem;
+}
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -659,6 +703,8 @@ body {
 }
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   left: -300px;
   top: 0;
@@ -678,7 +724,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 1.5rem;
+  height: 88px;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -688,15 +735,23 @@ body {
 }
 
 .sidebar-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  height: calc(100% - 70px);
 }
-
 .sidebar-menu {
   flex: 1;
   padding: 1rem 0;
 }
+.sidebar-footer {
+  
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
 
 .sidebar-item {
   display: flex;
@@ -714,13 +769,7 @@ body {
   padding-left: 2rem;
 }
 
-.sidebar-footer {
-  border-top: 1px solid var(--border-color);
-  padding: 1rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
+
 
 [data-theme="dark"] .sidebar {
   background-color: var(--surface-color);
