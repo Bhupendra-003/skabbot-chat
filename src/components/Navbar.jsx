@@ -19,7 +19,7 @@ const Navbar = ({ toggleSidebar, xp, streak, updateStreak }) => {
         </button>
         <div className="nav-logo">
           <img src="/placeholder.svg?height=40&width=40" alt="" className="logo-img" />
-          <span className="brand-name">SKABBOT</span>
+          <span className="brand-name">HomieAi</span>
         </div>
       </div>
 

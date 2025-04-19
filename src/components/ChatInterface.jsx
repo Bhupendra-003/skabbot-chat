@@ -51,11 +51,27 @@ const ChatInterface = ({ updateXp, userDetails }) => {
   return (
     <div className="chat-container">
       <div className="message-area" ref={messageAreaRef}>
-        {messages.map((msg, index) => (
+
+        {!messages || messages.length == 0 ? (
+          <div className="welcome-center">
+            <h2>Hey there 👋</h2>
+            <p>
+              I'm <strong>HomieAi</strong> – your mental health sidekick. 💬 <br />
+              Feeling anxious, overwhelmed, or just wanna talk? I’m here. No judgment. Talk about anything you want <br />
+              You type. I listen. We vibe. 🧘‍♂️✨
+            </p>
+            <p>
+              Earn XP, build streaks, and grow while growing. 🎮💚
+            </p>
+            <p>
+              So... what’s on your mind today? 🙂
+            </p>
+          </div>
+        ) : (messages.map((msg, index) => (
           <div key={index} className={`msg-${msg.sender}`}>
             {msg.content}
           </div>
-        ))}
+        )))}
         {isLoading && (
           <div className="dots-loading msg-bot">
             <span></span>
