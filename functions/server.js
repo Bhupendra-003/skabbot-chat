@@ -9,7 +9,7 @@ app.use(express.json());
 // CORS middleware for local development (frontend on 5173)
 app.use((req, res, next) => {
     const origin = req.headers.origin;
-    const allowedOrigins = ["http://localhost:5173", "http://localhost:8888"];
+    const allowedOrigins = ["http://localhost:5173", "https://homieai.netlify.app"];
     
     if (origin && allowedOrigins.includes(origin)) {
         res.setHeader("Access-Control-Allow-Origin", origin);
